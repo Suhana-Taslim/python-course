@@ -1,6 +1,6 @@
 import turtle
 
-#Creating Canvas
+
 turtle.Screen().bgcolor("Green")
 
 sc = turtle.Screen()
