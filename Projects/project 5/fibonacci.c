@@ -20,3 +20,4 @@ def fibonacci_series(n):
 
 n = int(input("Enter the number of terms: "))
 fibonacci_series(n)
+print("the output")
