@@ -41,5 +41,3 @@ turtle.goto(200, 100)
 turtle.pendown()
 turtle.color("purple")
 hexagon()
-
-
