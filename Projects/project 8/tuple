@@ -1,0 +1,12 @@
+my_tuple = ()
+print(my_tuple)
+
+my_tuple = ('Suhana ' 'Taslim')
+print("First Name: ", my_tuple[0])
+print("Last Nmae: ", my_tuple[1])
+
+my_tuple = ('16', '162', '48', "Coding")
+print("Age: " ,my_tuple[0])
+print("Height: " ,my_tuple[1])
+print("Weight: " ,my_tuple[2])
+print("Favourite Subject: ", my_tuple[3])
