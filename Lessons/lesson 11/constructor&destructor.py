@@ -1,9 +1,12 @@
-class Student:
+class Animals:
+    name = "cat"
+
     def __init__(self):
-        print('Student Created.')
+        print("The name is",self.name)
+        print('Animals Created.')
 
     def __del__(self):
-        print('Destructor called, Student deleted.')   
+        print('Destructor called, Animals deleted.')   
 
-obj = Student()
+obj = Animals()
 del obj         
