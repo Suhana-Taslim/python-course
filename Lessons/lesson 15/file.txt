@@ -1,1 +1,2 @@
-I am Suhana Taslim 
+File in Write mode...Hi I am a Penguin I am 1.5 years old
+ File in Append mode...Hi I am a Penguin I am 1 year old
