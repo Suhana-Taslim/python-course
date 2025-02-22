@@ -5,4 +5,11 @@ File in Write mode...Hi I am a Penguin I am 1.5 years old
  c
  d
  e
- f
+ fFile 2 in progress...
+file 3
+file 4
+file 5
+File 2 in progress...
+file 3
+file 4
+file 5
