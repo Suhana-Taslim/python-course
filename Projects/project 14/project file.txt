@@ -1,0 +1,2 @@
+File in Write mode...Hi I am a Cr Of class 8
+ File in Append mode...Hi I am Cr of class 8
