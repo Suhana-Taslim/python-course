@@ -8,5 +8,5 @@ print(file.read(8))
 file.close()
 
 file = open('Project.txt','a')
-file.write("  Hi I am Sheru and I am the elder brother of momo.")
+file.write("  \nHi I am Sheru and I am the elder brother of momo.")
 file.close()
