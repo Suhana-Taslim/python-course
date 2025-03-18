@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.geometry("200*200")
+root.geometry("500x700")
 
 def msg():
     messagebox.showwarning("Alert", "Stop! Virus found")

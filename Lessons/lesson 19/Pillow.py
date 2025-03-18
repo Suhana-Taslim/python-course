@@ -3,7 +3,7 @@ from PIL import Image, ImageTk
 
 root = Tk()
 root.title('image')
-root.geometry('500*500')
+root.geometry('500x500')
 
 upload = Image.open("img.jpg")
 
