@@ -1,6 +1,6 @@
 import random
 
-words = ["apple", "banana", "mango", "grape", "orange", "melon", "berrries"]
+words = ["apple", "banana", "mango", "grape", "orange", "melon", "berries"]
 word = random.choice(words)
 scrambled = ' '.join(random.sample(word, len(word)))
 
