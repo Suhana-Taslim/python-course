@@ -9,3 +9,4 @@ if 1 <= n <=len(binary):
     print("Thats a bit.\n",bit)
 else:
     print("not a bit")
+    break
