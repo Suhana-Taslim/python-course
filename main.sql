@@ -1,27 +1,46 @@
-CREATE TABLE
-IF NOT EXISTS NOBEL_WIN
-(
-  YEAR INTEGER,
-  SUBJECT TEXT,
-  WINNER TEXT,
-  COUNTRY TEXT,
-  CATEGORY TEXT
+CREATE TABLE IF NOT EXISTS nomnom (
+  NAME TEXT,
+  NEIGHBOURHOOD TEXT,
+  CUISINE TEXT,
+  REVIEW REAL,
+  PRICE TEXT,
+  HEALTH TEXT
 );
 
-INSERT INTO NOBEL_WIN
-     (YEAR, SUBJECT, WINNER, COUNTRY, CATEGORY)
-VALUES
-     (1970, 'PHYSICS', 'HANNES ALFVEN', 'SWEDEN', 'SCIENTIST'),
-     (1970, 'PHYSICS', 'LOUIS NEEL', 'FRANCE', 'SCIENTIST'),
-     (1971, 'PHYSICS', 'PAUL', 'FRANCE', 'SCIENTIST'),
-     (1971, 'CHEMISTRY', 'HAMILTON', 'SWEDEN', 'LINGUIST'),
-     (1972, 'LITERATURE', 'BERNARD KELSON', 'GERMANY', 'ECONOMIST'),
-     (1972, 'ECONOMICS', 'JOSEPH', 'RUSSIA', 'ECONOMIST'),
-     (1973, 'BIOLOGY', 'PHILIPS', 'USA', 'PRIME MINISTER'),
-     (1980, 'BIOLOGY', 'MARTIN', 'USA', 'PRESIDENT'),
-     (1981, 'PHYSICOLOGY', 'HANNAH', 'HUNGARY', 'SCIENTIST'),
-     (1975, 'PHYSICS', 'PETER', 'CHILE', 'SCIENTIST');
+INSERT INTO nomnom(NAME, NEIGHBOURHOOD, CUISINE, REVIEW, PRICE, HEALTH) VALUES
+  ('Peter', 'Brooklyn', 'Steak', 4.4, '$$$$', 'A'),
+  ('Jongro', 'Midtown', 'Korean', 3.5, '$$', 'A'),
+  ('Pocha', 'Midtown', 'Pizza', 4, '$$$', 'B'),
+  ('Lighthouse', 'Queens', 'Chinese', 3.9, '$', 'A'),
+  ('Minca', 'Downtown', 'American', 4.6, '$$$', 'B'),
+  ('Riya', 'Mumbai', 'Indian', 4.9, '$$$$$', 'A'),
+  ('George', 'Brooklyn', 'Steak', 4, '$$$$', 'A'),
+  ('Jasmine', 'Midtown', 'Korean', 3.2, '$$', 'B'),
+  ('Priya', 'Midtown', 'Burger', 4, '$$$', 'B'),
+  ('Mohan', 'Paris', 'Italian', 4.1, '$$', 'B');
 
-SELECT *
-FROM NOBEL_WIN
-WHERE SUBJECT NOT LIKE 'P%';
+select * from nomnom;
+
+select '---Maximum---';
+select max(REVIEW) from nomnom;
+
+select '---Minimum---';
+select min(REVIEW) from nomnom;
+
+select '---Average---';
+select avg(REVIEW) from nomnom;
+
+select '---Sum---';
+select sum(REVIEW) from nomnom;
+
+select '---distinct---';
+select distinct(NEIGHBOURHOOD) from nomnom;
+
+select '----------';
+select * from nomnom where NEIGHBOURHOOD like ('%n');
+
+select '---AVG REVIEW---';
+select CUISINE, avg(REVIEW) from nomnom group by CUISINE;
+
+select '---MAX REVIEW---';
+select CUISINE, max(REVIEW) from nomnom group by CUISINE;
