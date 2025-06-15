@@ -1,46 +1,28 @@
-CREATE TABLE IF NOT EXISTS nomnom (
-  NAME TEXT,
-  NEIGHBOURHOOD TEXT,
-  CUISINE TEXT,
-  REVIEW REAL,
-  PRICE TEXT,
-  HEALTH TEXT
+-- Create sample table
+CREATE TABLE customer (
+  customer_id   INT PRIMARY KEY,
+  cust_name     VARCHAR(100),
+  city          VARCHAR(50),
+  grade         INT,
+  salesman_id   INT
 );
 
-INSERT INTO nomnom(NAME, NEIGHBOURHOOD, CUISINE, REVIEW, PRICE, HEALTH) VALUES
-  ('Peter', 'Brooklyn', 'Steak', 4.4, '$$$$', 'A'),
-  ('Jongro', 'Midtown', 'Korean', 3.5, '$$', 'A'),
-  ('Pocha', 'Midtown', 'Pizza', 4, '$$$', 'B'),
-  ('Lighthouse', 'Queens', 'Chinese', 3.9, '$', 'A'),
-  ('Minca', 'Downtown', 'American', 4.6, '$$$', 'B'),
-  ('Riya', 'Mumbai', 'Indian', 4.9, '$$$$$', 'A'),
-  ('George', 'Brooklyn', 'Steak', 4, '$$$$', 'A'),
-  ('Jasmine', 'Midtown', 'Korean', 3.2, '$$', 'B'),
-  ('Priya', 'Midtown', 'Burger', 4, '$$$', 'B'),
-  ('Mohan', 'Paris', 'Italian', 4.1, '$$', 'B');
+-- Sample data insertion
+INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES
+ (3002, 'Nick Rimando',  'New York', 100, 5001),
+ (3007, 'Brad Davis',    'New York', 200, 5001),
+ (3005, 'Graham Zusi',   'California', 200, 5002),
+ (3008, 'Julian Green',  'London',    300, 5002),
+ (3004, 'Fabian Johnson','Paris',     300, 5006),
+ (3009, 'Geoff Cameron', 'Berlin',    100, 5003),
+ (3003, 'Jozy Altidor',  'Moscow',    200, 5007);
 
-select * from nomnom;
+-- 1. OR condition query
+SELECT * FROM customer
+WHERE city = 'New York'
+   OR grade > 100;
 
-select '---Maximum---';
-select max(REVIEW) from nomnom;
-
-select '---Minimum---';
-select min(REVIEW) from nomnom;
-
-select '---Average---';
-select avg(REVIEW) from nomnom;
-
-select '---Sum---';
-select sum(REVIEW) from nomnom;
-
-select '---distinct---';
-select distinct(NEIGHBOURHOOD) from nomnom;
-
-select '----------';
-select * from nomnom where NEIGHBOURHOOD like ('%n');
-
-select '---AVG REVIEW---';
-select CUISINE, avg(REVIEW) from nomnom group by CUISINE;
-
-select '---MAX REVIEW---';
-select CUISINE, max(REVIEW) from nomnom group by CUISINE;
+-- 2. AND condition query
+SELECT * FROM customer
+WHERE city = 'New York'
+  AND grade > 100;
