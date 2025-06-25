@@ -1,55 +1,61 @@
-CREATE TABLE employees (
-    employee_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    phone VARCHAR(20),
-    hire_date DATE NOT NULL,
-    job_title VARCHAR(50),
-    department VARCHAR(50),
-    salary DECIMAL(12,2),
-    manager_id INT,
-    FOREIGN KEY (manager_id) REFERENCES employees(employee_id) ON DELETE SET NULL
+CREATE TABLE customers (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100),
+  country VARCHAR(100)
 );
 
-CREATE TABLE employee_details (
-    employee_id INT PRIMARY KEY,
-    date_of_birth DATE,
-    address VARCHAR(255),
-    city VARCHAR(100),
-    state VARCHAR(100),
-    emergency_contact VARCHAR(100),
-    FOREIGN KEY (employee_id) REFERENCES employees(employee_id) ON DELETE CASCADE
+CREATE TABLE products (
+  product_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  category VARCHAR(50),
+  price DECIMAL(10,2)
 );
 
-INSERT INTO employees (first_name, last_name, email, phone, hire_date, job_title, department, salary, manager_id) VALUES
-('Harsh', 'Patel', 'harsh.patel@example.com', '+91-9876543210', '2020-07-01', 'CEO', 'Executive', 250000.00, NULL),
-('Anjali', 'Kumari', 'anjali.kumari@example.com', '0495-1234567', '2021-03-15', 'HR Manager', 'Human Resources', 120000.00, 1),
-('Rahul', 'Sharma', 'rahul.sharma@example.com', '0495-7654321', '2022-01-20', 'Software Engineer', 'Engineering', 90000.00, 1),
-('Priya', 'Iyer', 'priya.iyer@example.com', '0495-2345678', '2023-05-10', 'Accountant', 'Finance', 70000.00, 1);
+CREATE TABLE exports (
+  export_id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT,
+  product_id INT,
+  export_country VARCHAR(100),
+  export_date DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+  FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
 
-INSERT INTO employee_details (employee_id, date_of_birth, address, city, state, emergency_contact) VALUES
-(1, '1980-04-15', '123, MG Road', 'Chennai', 'TN', 'Leela Patel: +91‑9123456789'),
-(2, '1990-09-22', '456, Park Street', 'Kolkata', 'WB', 'Sunil Kumar: +91‑9234567890');
+INSERT INTO customers (name,email,country) VALUES
+('Aaron Orville','aaron@example.com','USA'),
+('Alice Morgan','alice@example.com','UK'),
+('Bob Smith','bob@example.com','Canada'),
+('Adorant Orin','adorant@example.com','India'),
+('Arnold','arnold@example.com','Australia');
+
+INSERT INTO products (name,category,price) VALUES
+('Orchid Vase','Home Decor',49.99),
+('Anchor Bracelet','Accessories',19.99),
+('Orbit Drone','Electronics',299.99),
+('Organic Soap','Beauty',5.99);
+
+INSERT INTO exports (customer_id,product_id,export_country,export_date) VALUES
+(1,3,'Japan','2025-01-15'),
+(2,1,'Germany','2025-02-10'),
+(4,2,'France','2025-03-05'),
+(5,4,'Canada','2025-04-20'),
+(1,4,'Mexico','2025-05-25');
 
 SELECT
-    e.employee_id,
-    e.first_name,
-    e.last_name,
-    e.email,
-    e.phone,
-    e.hire_date,
-    e.job_title,
-    e.department,
-    e.salary,
-    m.first_name AS manager_first_name,
-    m.last_name AS manager_last_name,
-    d.date_of_birth,
-    d.address,
-    d.city,
-    d.state,
-    d.emergency_contact
-FROM employees e
-LEFT JOIN employees m ON e.manager_id = m.employee_id
-LEFT JOIN employee_details d ON e.employee_id = d.employee_id
-ORDER BY e.employee_id;
+  c.customer_id,
+  c.name,
+  c.email,
+  c.country AS customer_country,
+  p.product_id,
+  p.name AS product_name,
+  p.category,
+  p.price,
+  e.export_country,
+  e.export_date
+FROM customers c
+JOIN exports e ON c.customer_id = e.customer_id
+JOIN products p ON p.product_id = e.product_id
+WHERE c.name LIKE 'A%' 
+  AND c.name LIKE '%or%' 
+ORDER BY c.customer_id, e.export_date;
